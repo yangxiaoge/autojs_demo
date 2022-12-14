@@ -1,8 +1,9 @@
-auto() //需要开启无障碍模式
+auto.waitFor() //检查无障碍服务是否已经启用，如果没有启用则跳转到无障碍服务启用界面，并等待无障碍服务启动；当无障碍服务启动后脚本会继续运行。
+
 const wechatPkg = "com.tencent.mm" //微信包名
 const redEnvelopes = id("b47") //红包控件
-const redPocketText = id("y4") //微信红包
-const redPocketGot = id("xs") //红包状态：红包已领取或已被领完
+const redPocketText = id("y4") //红包控件 - 左下角：微信红包（文字控件）
+const redPocketGot = id("xs") //红包控件 - 中间位置：红包状态（红包已领取或已被领完）
 const openIds = id("giq") //红包对话框 - 开
 
 //子线程-监听微信页面
@@ -54,7 +55,7 @@ threads.start(function () {
     function openBox() {
         if (openIds.exists()) {
             openIds.findOne().click()
-            toastLog(1000)
+            sleep(1000)
             toastLog("返回")
             back()
         } else {
