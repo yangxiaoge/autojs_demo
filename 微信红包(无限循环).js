@@ -1,3 +1,9 @@
+/*
+ * @Author: Bruce Young
+ * @Date: 2022年12月14日
+ * @Description: 微信红包插件
+ */
+
 auto.waitFor() //检查无障碍服务是否已经启用，如果没有启用则跳转到无障碍服务启用界面，并等待无障碍服务启动；当无障碍服务启动后脚本会继续运行。
 
 const wechatPkg = "com.tencent.mm" //微信包名
