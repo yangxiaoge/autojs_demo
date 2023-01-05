@@ -22,7 +22,7 @@ sleep(1000)
 //创建本次截屏文件
 var curtime = new Date()
 var picName = curtime.getTime() + ".png"
-var filePath = "/sdcard/aaa/" + picName
+var filePath = files.getSdcardPath() + "/aaa/" + picName
 var createFileResult = files.createWithDirs(filePath)
 if (createFileResult) {
     console.log("文件创建成功！");
@@ -35,6 +35,11 @@ var result = images.captureScreen(filePath)
 //img.saveTo("/sdcard/" + picName)
 if (result) {
     toastLog("截图保存完成！")
+    toastLog(filePath)
+
+    //ocr识别-实验性
+    let res = paddle.ocrText(images.read(filePath));
+    toastLog("ocr识别结果：\n" + JSON.stringify(res))
 } else {
     toastLog("截图保存失败！")
 }
